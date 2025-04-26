@@ -1,9 +1,9 @@
 {
-    "name": "BELTAH-MD Pairing",
-    "description": "BELTAH-MD WA bot, Created by Beltah KE",
-    "logo": "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
-    "repository": "https://github.com/Beltahmd/Beltah-Sessions",
-    "keywords": ["LegacyMd"],
+    "name": "Raven session",
+    "description": "a session generator for raven-bot",
+    "logo": "https://files.catbox.moe/ojo6av.jpg",
+    "repository": "https://github.com/HunterNick2/RAVEN-BOT",
+    "keywords": ["RAVEN-BOT"],
     "success_url": "/", 
     "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
     "env": {      
@@ -13,7 +13,7 @@
         "required": false 
       },
       "MESSAGE": {
-        "description": "set session id conformation message",
+        "description": "This site is only for session generating",
         "value": "",
         "required": false 
       }
