@@ -1,0 +1,22 @@
+{
+    "name": "BELTAH-MD Pairing",
+    "description": "BELTAH-MD WA bot, Created by Beltah KE",
+    "logo": "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+    "repository": "https://github.com/Beltahmd/Beltah-Sessions",
+    "keywords": ["LegacyMd"],
+    "success_url": "/", 
+    "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
+    "env": {      
+      "PORT": {
+        "description": "Port for web app.4000,5000,3000... any!",
+        "value": "5000",
+        "required": false 
+      },
+      "MESSAGE": {
+        "description": "set session id conformation message",
+        "value": "",
+        "required": false 
+      }
+    }   
+
+}
