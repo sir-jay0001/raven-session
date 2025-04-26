@@ -5,7 +5,7 @@ const express = require('express');
 const fs = require('fs');
 const pino = require('pino');
 const {
-    default: Brasho_Kish,
+    default: RavenConnect,
     useMultiFileAuthState,
     delay,
     makeCacheableSignalKeyStore,
@@ -24,10 +24,10 @@ router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
 
-    async function LEGACY_MD_PAIR_CODE() {
+    async function RAVEN() {
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
         try {
-            const Pair_Code_By_Brasho_Kish = Brasho_Kish({
+            const client = RavenConnect({
                 auth: {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({ level: 'fatal' }).child({ level: 'fatal' })),
@@ -37,39 +37,39 @@ router.get('/', async (req, res) => {
                 browser: ['Chrome (Linux)', '', '']
             });
 
-            if (!Pair_Code_By_Brasho_Kish.authState.creds.registered) {
+            if (!client.authState.creds.registered) {
                 await delay(1500);
                 num = num.replace(/[^0-9]/g, '');
-                const code = await Pair_Code_By_Brasho_Kish.requestPairingCode(num);
+                const code = await client.requestPairingCode(num);
 
                  if (!res.headersSent) {
                     await res.send({ code });
                 }
             }
 
-            Pair_Code_By_Brasho_Kish.ev.on('creds.update', saveCreds);
-            Pair_Code_By_Brasho_Kish.ev.on('connection.update', async (s) => {
+            client.ev.on('creds.update', saveCreds);
+            client.ev.on('connection.update', async (s) => {
                 const { connection, lastDisconnect } = s;
                 if (connection === 'open') {
-                await Pair_Code_By_Brasho_Kish.sendMessage(Pair_Code_By_Brasho_Kish.user.id, { text: `Sending Session_id now... Wait a moment ` });
+                await client.sendMessage(client.user.id, { text: `Generating your session, Wait a moment. . .` });
                     await delay(50000);
                     
                     const data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                     await delay(8000);
                     const b64data = Buffer.from(data).toString('base64');
-                    const session = await Pair_Code_By_Brasho_Kish.sendMessage(Pair_Code_By_Brasho_Kish.user.id, { text: '' + b64data });
+                    const session = await client.sendMessage(client.user.id, { text: '' + b64data });
 
                     // Send message after session
-                    await Pair_Code_By_Brasho_Kish.sendMessage(Pair_Code_By_Brasho_Kish.user.id, {text: `Raven has been linked to your WhatsApp account! Do not share this session_id with anyone. 
+                    await client.sendMessage(client.user.id, {text: `Raven has been linked to your WhatsApp account! Do not share this session_id with anyone. 
 
 Copy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/message/YNDA2RFTE35LB1\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉. ` }, { quoted: session });
                     
                     await delay(100);
-                    await Pair_Code_By_Brasho_Kish.ws.close();
+                    await client.ws.close();
                     removeFile('./temp/' + id);
                 } else if (connection === 'close' && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode !== 401) {
                     await delay(10000);
-                    LEGACY_MD_PAIR_CODE();
+                    RAVEN();
                 }
             });
         } catch (err) {
@@ -81,7 +81,7 @@ Copy and paste it on the SESSION string during deploy as it will be used for aut
         }
     }
 
-    await LEGACY_MD_PAIR_CODE();
+    await RAVEN();
 });
 
 module.exports = router;
