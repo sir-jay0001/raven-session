@@ -1,14 +1,14 @@
 {
-    "description": "keith-sessions",
-    "main": "./keithkeizzah.js",
+    "description": "Raven session generator",
+    "main": "./index.js",
   "engines" : { 
     "npm" : ">=9.7.2",
     "node" : ">=20.0.0"
     },
     "scripts": {
-    "start": "node keithkeizzah.js"
+    "start": "node index.js"
   },
-  "author": "keith Tech",
+  "author": "Nick",
   "license": "GPL-3.0 license",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.5.0",
