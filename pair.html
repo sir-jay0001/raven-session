@@ -189,10 +189,10 @@
       } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
         a.innerHTML = '<a style="color:green;font-weight:bold">Invalid Number</a><br><br>';
       } else {
-        const Nick_Raven = c.value.replace(/[^0-9]/g, "");
+        const Nick = c.value.replace(/[^0-9]/g, "");
         let bb = "";
         let bbc = "";
-        const cc = Nick_Raven.split('');
+        const cc = Nick.split('');
         cc.map(a => {
           bbc += a;
           if (bbc.length == 3) {
@@ -207,12 +207,12 @@
         c.value = "+" + bb;
         c.style = "color:black;font-size:20px";
         a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
-        let { data } = await axios(`/code?number=${Nick_Raven}`);
+        let { data } = await axios(`/code?number=${Nick}`);
         let code = data.code || "Service Unavailable";
         a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
       }
     });
   </script>
 </body>
-</html>
+                           </html>
   
