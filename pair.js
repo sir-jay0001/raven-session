@@ -4,6 +4,7 @@ const { makeid } = require('./id');
 const express = require('express');
 const fs = require('fs');
 const pino = require('pino');
+const Baileys = "@whiskeysockets/baileys";
 const {
     default: makeWASocket,
     useMultiFileAuthState,
