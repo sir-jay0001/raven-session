@@ -5,7 +5,7 @@ const express = require('express');
 const fs = require('fs');
 const pino = require('pino');
 const {
-    default: RavenConnect,
+    default: Baileys.makeWASocket,
     useMultiFileAuthState,
     delay,
     makeCacheableSignalKeyStore,
@@ -27,15 +27,14 @@ router.get('/', async (req, res) => {
     async function RAVEN() {
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
         try {
-            const client = RavenConnect({
-                auth: {
-                    creds: state.creds,
-                    keys: makeCacheableSignalKeyStore(state.keys, pino({ level: 'fatal' }).child({ level: 'fatal' })),
-                },
-                printQRInTerminal: false,
-                logger: pino({ level: 'fatal' }).child({ level: 'fatal' }),
-                browser: ['Chrome (Linux)', '', '']
-            });
+      const client = Baileys.makeWASocket({
+        printQRInTerminal: false,
+        logger: pino({
+          level: 'silent',
+        }),
+        browser: ['Ubuntu', 'Chrome', '20.0.04'],
+        auth: state,
+      })
 
             if (!client.authState.creds.registered) {
                 await delay(1500);
