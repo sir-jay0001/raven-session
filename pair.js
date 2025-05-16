@@ -5,7 +5,7 @@ const express = require('express');
 const fs = require('fs');
 const pino = require('pino');
 const {
-    default: Baileys.makeWASocket,
+    default: makeWASocket,
     useMultiFileAuthState,
     delay,
     makeCacheableSignalKeyStore,
