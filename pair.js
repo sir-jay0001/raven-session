@@ -9,7 +9,7 @@ const {
     useMultiFileAuthState,
     delay,
     makeCacheableSignalKeyStore,
-} = require('maher-zubair-baileys');
+} = require("@whiskeysockets/baileys");
 
 const router = express.Router();
 
