@@ -4,7 +4,6 @@ const { makeid } = require('./id');
 const express = require('express');
 const fs = require('fs');
 const pino = require('pino');
-const Baileys = "@whiskeysockets/baileys";
 const {
     default: makeWASocket,
     useMultiFileAuthState,
@@ -28,7 +27,7 @@ router.get('/', async (req, res) => {
     async function RAVEN() {
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
         try {
-      const client = Baileys.makeWASocket({
+      const client = makeWASocket({
         printQRInTerminal: false,
         logger: pino({
           level: 'silent',
