@@ -8,8 +8,9 @@ const {
     default: makeWASocket,
     useMultiFileAuthState,
     delay,
+    Browsers,
     makeCacheableSignalKeyStore,
-} = require("baileys-elite");
+} = require("@whiskeysockets/baileys");
 
 const router = express.Router();
 
@@ -32,7 +33,7 @@ router.get('/', async (req, res) => {
         logger: pino({
           level: 'silent',
         }),
-        browser: ['Ubuntu', 'Chrome', '20.0.04'],
+          browser: Browsers.macOS("Desktop"),
         auth: state,
       })
 
@@ -59,9 +60,7 @@ router.get('/', async (req, res) => {
                     const session = await client.sendMessage(client.user.id, { text: '' + b64data });
 
                     // Send message after session
-                    await client.sendMessage(client.user.id, {text: `Raven has been linked to your WhatsApp account! Do not share this session_id with anyone. 
-
-Copy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/message/YNDA2RFTE35LB1\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉. ` }, { quoted: session });
+                    await client.sendMessage(client.user.id, {text: "```Raven has been linked to your WhatsApp account! Do not share this session_id with anyone.\n\nCopy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/message/YNDA2RFTE35LB1\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉. ```" }, { quoted: session });
                     
                     await delay(100);
                     await client.ws.close();
