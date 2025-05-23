@@ -9,7 +9,7 @@ const {
     useMultiFileAuthState,
     delay,
     makeCacheableSignalKeyStore,
-} = require("@whiskeysockets/baileys");
+} = require("baileys-elite");
 
 const router = express.Router();
 
