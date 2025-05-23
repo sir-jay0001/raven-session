@@ -13,7 +13,6 @@
   "dependencies": {
     "@whiskeysockets/baileys": "latest",
     "maher-zubair-baileys": "^6.6.5",
-    "baileys-elite": "^0.0.4",
     "qrcode": "^1.5.3",
     "awesome-phonenumber": "^2.64.0",
     "pino": "^8.1.0",
