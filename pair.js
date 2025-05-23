@@ -8,7 +8,6 @@ const {
     default: makeWASocket,
     useMultiFileAuthState,
     delay,
-    Browsers,
     makeCacheableSignalKeyStore,
 } = require("@whiskeysockets/baileys");
 
@@ -33,7 +32,7 @@ router.get('/', async (req, res) => {
         logger: pino({
           level: 'silent',
         }),
-          browser: Browsers.macOS("Desktop"),
+        browser: ['Ubuntu', 'Chrome', '20.0.04'],
         auth: state,
       })
 
