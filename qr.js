@@ -28,13 +28,13 @@ const {
 } = require("node:fs/promises")
 router.get('/', async (req, res) => {
 	const id = makeid();
-	async function RAVEN() {
+	async function SMART() {
 		const {
 			state,
 			saveCreds
 		} = await useMultiFileAuthState('./temp/' + id)
 		try {
-			let client = RavenConnect({
+			let client = SmartConnect({
 				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
@@ -52,14 +52,14 @@ router.get('/', async (req, res) => {
 				} = s;
 				if (qr) await res.end(await QRCode.toBuffer(qr));
 				if (connection == "open") {
-				await client.sendMessage(client.user.id, { text: 'Generating your session_id..wait a moment' });
+				await client.sendMessage(client.user.id, { text: 'Generating your session_id..wait a moment🔑🔑🔑⏳⌛' });
 					await delay(50000);
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(8000);
 				   let b64data = Buffer.from(data).toString('base64');
 				   let session = await client.sendMessage(client.user.id, { text: '' + b64data });
 	
-let Textt = "```Raven has been linked to your WhatsApp account! Do not share this session_id with anyone.\n\nCopy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/message/YNDA2RFTE35LB1\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉.```"
+let Textt = "```Smart bot has been linked to your WhatsApp account! Do not share this session_id with anyone.\n\nCopy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/254794597254\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉.```"
 	
 			await client.sendMessage(client.user.id,{ text: Textt }, {quoted: session })
 
