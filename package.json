@@ -1,5 +1,5 @@
 {
-    "description": "Raven session generator",
+    "description": "Smart session generator",
     "main": "./index.js",
   "engines" : { 
     "npm" : ">=9.7.2",
@@ -8,7 +8,7 @@
     "scripts": {
     "start": "node index.js"
   },
-  "author": "Nick",
+  "author": "Jay",
   "license": "GPL-3.0 license",
   "dependencies": {
     "@whiskeysockets/baileys": "latest",
