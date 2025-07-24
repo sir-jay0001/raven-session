@@ -1,9 +1,9 @@
 {
-    "name": "Raven session",
-    "description": "a session generator for raven-bot",
-    "logo": "https://files.catbox.moe/ojo6av.jpg",
-    "repository": "https://github.com/HunterNick2/RAVEN-BOT",
-    "keywords": ["RAVEN-BOT"],
+    "name": "Smart session",
+    "description": "a session generator for smart-bot",
+    "logo": "https://files.catbox.moe/vev67n.jpg",
+    "repository": "https://github.com/sir-jay0001/SMART-BOT",
+    "keywords": ["SMART-BOT"],
     "success_url": "/", 
     "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
     "env": {      
