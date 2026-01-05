@@ -1,5 +1,5 @@
 {
-    "description": "Smart session generator",
+    "description": "Nova xmd session generator",
     "main": "./index.js",
   "engines" : { 
     "npm" : ">=9.7.2",
