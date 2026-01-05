@@ -59,14 +59,14 @@ router.get('/', async (req, res) => {
                     const session = await client.sendMessage(client.user.id, { text: '' + b64data });
 
                     // Send message after session
-                    await client.sendMessage(client.user.id, {text: "```Smart bot has been linked to your WhatsApp account! Do not share this session_id with anyone.\n\nCopy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/254794597254\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉. ```" }, { quoted: session });
+                    await client.sendMessage(client.user.id, {text: "```NOVA XMD has been linked to your WhatsApp account! Do not share this session_id with anyone.\n\nCopy and paste it on the SESSION string during deploy as it will be used for authentication.\n\nIncase you are facing Any issue reach me via here👇\n\nhttps://wa.me/254794597254\n\nAnd don't forget to sleep😴, for even the rentless must recharge⚡.\n\nGoodluck 🎉. ```" }, { quoted: session });
                     
                     await delay(100);
                     await client.ws.close();
                     removeFile('./temp/' + id);
                 } else if (connection === 'close' && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode !== 401) {
                     await delay(10000);
-                    RAVEN();
+                    NOVA();
                 }
             });
         } catch (err) {
@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
         }
     }
 
-    await SMART();
+    await NOVA();
 });
 
 module.exports = router;
