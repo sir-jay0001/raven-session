@@ -1,9 +1,9 @@
 {
     "name": "Smart session",
-    "description": "a session generator for smart-bot",
+    "description": "a session generator for nova-xmd",
     "logo": "https://files.catbox.moe/vev67n.jpg",
-    "repository": "https://github.com/sir-jay0001/SMART-BOT",
-    "keywords": ["SMART-BOT"],
+    "repository": "https://github.com/sir-jay0001/NOVA-XMD",
+    "keywords": ["NOVA-XMD"],
     "success_url": "/", 
     "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
     "env": {      
